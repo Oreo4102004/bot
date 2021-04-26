@@ -17,7 +17,7 @@ class Bot(commands.Bot):
         intents.presences = True
 
         self.http_session = ClientSession()
-        super().__init__(command_prefix=constants.PREFIX, intents=intents)
+        super().__init__(command_prefix=constants.PREFIX, help_command=None, intents=intents)
 
     def load_extensions(self) -> None:
         """Load all the extensions in the exts/ folder."""
