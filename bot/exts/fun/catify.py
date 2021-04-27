@@ -94,3 +94,5 @@ class Catify(commands.Cog):
 def setup(bot: commands.Bot) -> None:
     """Loads the catify cog."""
     bot.add_cog(Catify(bot))
+    docs = {"catify": f"{Catify.catify.help}"}
+    bot.docs.update(docs)

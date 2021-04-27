@@ -41,6 +41,7 @@ class Zen(commands.Cog):
 
     @commands.command(aliases=["zenofpycat", "zen"])
     async def zencat(self, ctx: commands.Context, index: Optional[int]) -> None:
+        """Sends a modified version of the python zen."""
         rand_color = COLORS[random.choice(list(COLORS.keys()))]
 
         if index is None:
@@ -83,3 +84,5 @@ class Zen(commands.Cog):
 def setup(bot: commands.Bot) -> None:
     """Loads the Zen cog."""
     bot.add_cog(Zen(bot))
+    docs = {"zencat": Zen.zencat.help}
+    bot.docs.update(docs)

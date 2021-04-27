@@ -17,7 +17,9 @@ class Bot(commands.Bot):
         intents.presences = True
 
         self.http_session = ClientSession()
-        super().__init__(command_prefix=constants.PREFIX, help_command=None, intents=intents)
+        super().__init__(
+            command_prefix=constants.PREFIX, help_command=None, intents=intents
+        )
 
     def load_extensions(self) -> None:
         """Load all the extensions in the exts/ folder."""
@@ -29,6 +31,8 @@ class Bot(commands.Bot):
 
             self.load_extension(dot_path)
             logger.info(f"Successfully loaded extension:  {dot_path}.")
+
+    docs = {}
 
     def run(self) -> None:
         """Run the bot with the token in constants.py/.env ."""

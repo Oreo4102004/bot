@@ -11,6 +11,7 @@ class makeembed(commands.Cog):
 
     @commands.command()
     async def makeembed(self, ctx):
+        """Makes an embed based on parameters set by the user."""
         data = get_yaml_val("config.yml", "colors")["colors"]
 
         questions = [
@@ -157,3 +158,5 @@ class makeembed(commands.Cog):
 
 def setup(bot):
     bot.add_cog(makeembed(bot))
+    docs = {"makeembed": makeembed.makeembed.help}
+    bot.docs.update(docs)
