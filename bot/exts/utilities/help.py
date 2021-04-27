@@ -21,7 +21,8 @@ class Help(commands.Cog):
         if not command:
             embed = discord.Embed(
                 title="Help: All",
-                description=f"A detailed list of all commands. For help on a specific command, do `{bot.constants.PREFIX}help [command]`.",
+                description=f"A detailed list of all commands. For help on a specific command, "
+                f"do `{bot.constants.PREFIX}help [command]`.",
                 color=colors["light_blue"],
             )
             for element in self.bot.commands:
