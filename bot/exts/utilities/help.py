@@ -25,11 +25,14 @@ class Help(commands.Cog):
                 f"do `{bot.constants.PREFIX}help [command]`.",
                 color=colors["light_blue"],
             )
+
             for element in self.bot.commands:
                 commandraw = self.bot.get_command(element.qualified_name)
                 help = commandraw.help
                 embed.add_field(name=element.qualified_name, value=f"*{help}*")
+
             await ctx.send(embed=embed)
+
         elif command not in self.bot.commands:
             commandraw = self.bot.get_command(command.lower())
             if commandraw is None:
@@ -39,15 +42,18 @@ class Help(commands.Cog):
             help = commandraw.help
             alias_list = commandraw.aliases
             usage = commandraw.signature
+
             embed = discord.Embed(
                 title=f"Help: {name}",
                 description=f"*{help}*",
                 color=colors["light_blue"],
             )
+
             aliases = ", ".join(alias_list)
             embed.add_field(
                 name="Usage", value=f"`{bot.constants.PREFIX}{name}{usage}`"
             )
+
             embed.add_field(name="Can also use", value=f"*{aliases}*")
             await ctx.send(embed=embed)
         else:
@@ -56,18 +62,22 @@ class Help(commands.Cog):
             command_data = commandraw.help
             alias_list = commandraw.aliases
             command_args = commandraw.signature
+
             embed = discord.Embed(
                 title=f"Help: {command}",
                 description=f"*{command_data}*",
                 color=colors["light_blue"],
             )
+
             aliases = ", ".join(alias_list)
 
             embed.add_field(
                 name="Usage", value=f"`{bot.constants.PREFIX}{command}{command_args}`"
             )
+
             if aliases != "":
                 embed.add_field(name="Can also use", value=f"*{aliases}*")
+
             await ctx.send(embed=embed)
 
 
