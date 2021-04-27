@@ -51,7 +51,7 @@ class Help(commands.Cog):
             
             aliases = ", ".join(alias_list)
             embed.add_field(
-                name="Usage", value=f"`{bot.constants.PREFIX}{name}{usage}`"
+                name="Usage", value=f"`{bot.constants.PREFIX}{name} {usage}`"
             )
             if aliases == "" or " ":
                 pass
