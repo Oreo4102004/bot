@@ -158,5 +158,3 @@ class makeembed(commands.Cog):
 
 def setup(bot):
     bot.add_cog(makeembed(bot))
-    docs = {"makeembed": makeembed.makeembed.help}
-    bot.docs.update(docs)

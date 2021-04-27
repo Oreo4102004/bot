@@ -73,5 +73,3 @@ class Fun(commands.Cog):
 
 def setup(bot: commands.Bot):
     bot.add_cog(Fun(bot))
-    docs = {"eval": Fun.eval.help, "duck": Fun.duck.help}
-    bot.docs.update(docs)

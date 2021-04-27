@@ -172,9 +172,3 @@ class Moderation(commands.Cog):
 def setup(bot: commands.Bot):
     """Loads cog."""
     bot.add_cog(Moderation(bot))
-    docs = {
-        "pban": Moderation.pban.help,
-        "mute": Moderation.mute.help,
-        "purge": Moderation.purge.help,
-    }
-    bot.docs.update(docs)

@@ -84,5 +84,3 @@ class Zen(commands.Cog):
 def setup(bot: commands.Bot) -> None:
     """Loads the Zen cog."""
     bot.add_cog(Zen(bot))
-    docs = {"zencat": Zen.zencat.help}
-    bot.docs.update(docs)

@@ -24,8 +24,13 @@ class Help(commands.Cog):
                 description=f"A detailed list of all commands. For help on a specific command, do `{bot.constants.PREFIX}help [command]`.",
                 color=colors["light_blue"],
             )
-            for key, value in self.bot.docs.items():
-                embed.add_field(name=key, value=value)
+            for element in self.bot.commands:
+                commandraw = self.bot.get_command(element.qualified_name)
+                help = commandraw.help
+                embed.add_field(
+                    name=element.qualified_name,
+                    value=f"*{help}*"
+                )
             await ctx.send(embed=embed)
         elif command not in self.bot.commands:
             commandraw = self.bot.get_command(command.lower())
@@ -33,7 +38,7 @@ class Help(commands.Cog):
                 await ctx.send(f"`{command}` is an invalid command!")
                 return
             name = commandraw.qualified_name
-            help = self.bot.docs.get(name)
+            help = commandraw.help
             alias_list = commandraw.aliases
             usage = commandraw.signature
             embed = discord.Embed(
@@ -49,10 +54,10 @@ class Help(commands.Cog):
             await ctx.send(embed=embed)
         else:
             command = command.lower()
-            command_data = self.bot.docs.get(command)
-            command_args = self.bot.get_command(command)
-            alias_list = command_args.aliases
-            command_args = command_args.signature
+            commandraw = self.bot.get_command(command)
+            command_data = commandraw.help
+            alias_list = commandraw.aliases
+            command_args = commandraw.signature
             embed = discord.Embed(
                 title=f"Help: {command}",
                 description=f"*{command_data}*",
@@ -71,5 +76,3 @@ class Help(commands.Cog):
 def setup(bot: commands.Bot):
     """Loads cog."""
     bot.add_cog(Help(bot))
-    docs = {"help": Help.help.help}
-    bot.docs.update(docs)
