@@ -49,7 +49,7 @@ class Help(commands.Cog):
                 description=f"*{help}*",
                 color=colors["light_blue"],
             )
-            
+
             aliases = ", ".join(alias_list)
             embed.add_field(
                 name="Usage", value=f"`{bot.constants.PREFIX}{name} {usage}`"
