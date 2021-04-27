@@ -27,10 +27,7 @@ class Help(commands.Cog):
             for element in self.bot.commands:
                 commandraw = self.bot.get_command(element.qualified_name)
                 help = commandraw.help
-                embed.add_field(
-                    name=element.qualified_name,
-                    value=f"*{help}*"
-                )
+                embed.add_field(name=element.qualified_name, value=f"*{help}*")
             await ctx.send(embed=embed)
         elif command not in self.bot.commands:
             commandraw = self.bot.get_command(command.lower())

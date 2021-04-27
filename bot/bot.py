@@ -32,7 +32,6 @@ class Bot(commands.Bot):
             self.load_extension(dot_path)
             logger.info(f"Successfully loaded extension:  {dot_path}.")
 
-
     def run(self) -> None:
         """Run the bot with the token in constants.py/.env ."""
         logger.info("Starting bot.")
