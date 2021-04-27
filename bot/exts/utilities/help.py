@@ -62,6 +62,7 @@ class Help(commands.Cog):
                 embed.add_field(name="Can also use", value=f"*{aliases}*")
             await ctx.send(embed=embed)
 
+
 def setup(bot: commands.Bot):
     """Loads cog."""
     bot.add_cog(Help(bot))
