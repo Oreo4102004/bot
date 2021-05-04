@@ -26,7 +26,9 @@ class Times(commands.Cog):
     ):
         """Gets time in specified timezone.
 
-        If an argument is given, the command returns what the time will be in the specified duration in the specified timezone."""
+        If an argument is given, the command 
+        returns what the time will be in the 
+        specified duration in the specified timezone."""
         strzone = timezone
         timezone = pytz.timezone(timezone)
         if not intime:
