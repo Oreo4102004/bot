@@ -19,20 +19,22 @@ class Quote(commands.Cog):
         channel = self.bot.get_channel(quotechannel)
         await channel.send(f"{user.mention}: {quote}")
         await ctx.send("Successfully quoted message.")
+
     @commands.command("activate")
     @commands.has_any_role(833841708805652481, 852267769985761281, 839844083463749664)
-    async def activate(self,ctx: commands.Context, id : discord.TextChannel):
+    async def activate(self, ctx: commands.Context, id: discord.TextChannel):
           while True:
-                with open(r'bot/resources/eval/catcord.json') as f:
+                with open(r'bot/resources/quotes.json') as f:
                     fil = json.load(f)
                 sen = random.choice(fil['quotes'])
                 by = fil['authors'][fil['quotes'].index(sen)]
                 await channel.edit(name = f'ᗢ-ot-{sen[:100]}',topic = f'-By {by} Off-topic discussion.')
                 await asyncio.sleep(86400)
+
     @commands.Cog.listener()
-    async def on_message(self,message):
+    async def on_message(self, message):
         if message.channel.id == 809158704644751370:
-            with open(r'bot/bot/resources/eval/catcord.json') as f:
+            with open(r'bot/bot/resources/quotes.json') as f:
                 fil = json.load(f)
             res = ''
             for i in re.compile(r'[^<@!\d+>]').finditer(message.content):
