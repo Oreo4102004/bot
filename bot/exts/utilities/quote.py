@@ -23,7 +23,7 @@ class Quote(commands.Cog):
     @commands.has_any_role(833841708805652481, 852267769985761281, 839844083463749664)
     async def activate(self,ctx: commands.Context, id : discord.TextChannel):
           while True:
-                with open(r'catcord.json') as f:
+                with open(r'bot/bot/resources/eval/catcord.json') as f:
                     fil = json.load(f)
                 sen = random.choice(fil['quotes'])
                 by = fil['authors'][fil['quotes'].index(sen)]
@@ -32,7 +32,7 @@ class Quote(commands.Cog):
     @commands.Cog.listener()
     async def on_message(self,message):
         if message.channel.id == 809158704644751370:
-            with open(r'catcord.json') as f:
+            with open(r'bot/bot/resources/eval/catcord.json') as f:
                 fil = json.load(f)
             res = ''
             for i in re.compile(r'[^<@!\d+>]').finditer(message.content):
